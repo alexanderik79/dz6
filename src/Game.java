@@ -32,8 +32,8 @@ public class Game {
         String result = "";
         if (crossWord.contains(userWord)) {
             result = userWord + "###############";
-            return result;
+            return result.substring(0,14);
         }
-        else return wordCode;
+        else return wordCode.substring(0,14);
     }
 }
