@@ -13,6 +13,8 @@ public class Main {
         Game game = new Game();
         game.play();
     }
+
+
     public static int findSymbolOccurance (String string, char symbol ){
         int count = 0;
         for (int i = 0; i < string.length(); i++) {
