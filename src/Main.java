@@ -3,7 +3,6 @@ public class Main {
 
     public static void main(String[] args) {
 
-
         String s = "come on baby light my fire";
         System.out.println(findSymbolOccurance(s, 'e'));
         System.out.println(findWordPosition(s, "baby"));
@@ -39,7 +38,7 @@ public class Main {
         StringBuilder builder = new StringBuilder(palinString.toLowerCase().replaceAll("[^a-zа-я]", ""));
         String str = String.valueOf(builder);
         builder.reverse();
-        System.out.println(builder);
+        System.out.print(builder + " -> ");
         return String.valueOf(builder).equals(str);
     }
 }
