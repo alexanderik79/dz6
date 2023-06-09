@@ -6,14 +6,12 @@ public class Game {
     public void play(){
         System.out.println("Guess the word:\n###############");
         Scanner scanner = new Scanner(System.in);
-
         while (true){
             String userVvod = scanner.nextLine();
             for (int i = 0; i < userVvod.length(); i++) {
                 String letter = String.valueOf(userVvod.charAt(i));
                 if (crossWord.indexOf(letter) != -1){
                     int index = crossWord.indexOf(letter);
-                   // System.out.println(index);
                     result.replace(index, index+1, letter);
                     crossWord.replace(index, index+1, "#");
                 }
@@ -27,10 +25,7 @@ public class Game {
                 System.out.println(result + "\nKeep trying!");
             }
         }
-    }
-    public void wordDeCodeMethod (String userWord){
-
-
+        scanner.close();
     }
     public String randomWord (){
         String[] words = {"apple", "orange", "lemon", "banana", "apricot",
@@ -40,5 +35,4 @@ public class Game {
         int word = (int)(Math.random() * words.length);
         return words[word];
     }
-
 }
