@@ -1,24 +1,36 @@
 import java.util.Scanner;
-
 public class Game {
+    StringBuilder result = new StringBuilder("###############");
+    StringBuilder crossWord = new StringBuilder(randomWord());
+    String compare = crossWord + "###############";
     public void play(){
-        String crossWord = randomWord();
-        // String wordCode = crossWord.subSequence(0, 2) + "###############";
-        String wordCode = "###############";
-        System.out.println("Вгадай слово: \n" + wordCode);
-        while (true) {
-            Scanner scanner = new Scanner(System.in);
-            String userWord = scanner.next();
-            if (userWord.equals(crossWord)) {
-                System.out.println("YOU WIN !!!");
+        System.out.println("Guess the word:\n###############");
+        Scanner scanner = new Scanner(System.in);
+
+        while (true){
+            String userVvod = scanner.nextLine();
+            for (int i = 0; i < userVvod.length(); i++) {
+                String letter = String.valueOf(userVvod.charAt(i));
+                if (crossWord.indexOf(letter) != -1){
+                    int index = crossWord.indexOf(letter);
+                   // System.out.println(index);
+                    result.replace(index, index+1, letter);
+                    crossWord.replace(index, index+1, "#");
+                }
+            }
+            compare = compare.substring(0,15);
+            if (compare.equals(String.valueOf(result))){
+                System.out.println(compare = compare.replace("#", ""));
+                System.out.println("YOU WIN !!!!! ");
                 break;
+            }else{
+                System.out.println(result + "\nKeep trying!");
             }
-            else {
-                System.out.println("Спробуй ще:");
-            }
-            wordCode = wordCodeMethod(crossWord,userWord,wordCode);
-            System.out.println(wordCode);
         }
+    }
+    public void wordDeCodeMethod (String userWord){
+
+
     }
     public String randomWord (){
         String[] words = {"apple", "orange", "lemon", "banana", "apricot",
@@ -26,14 +38,7 @@ public class Game {
                 "leak", "kiwi", "mango", "mushroom", "nut", "olive", " pea", "peanut",
                 "pear", "pepper", "pineapple", "pumpkin", "potato"};
         int word = (int)(Math.random() * words.length);
-        return words[word-1];
+        return words[word];
     }
-    public String wordCodeMethod (String crossWord, String userWord, String wordCode){
-        String result = "";
-        if (crossWord.contains(userWord)) {
-            result = userWord + "###############";
-            return result.substring(0,14);
-        }
-        else return wordCode.substring(0,14);
-    }
+
 }
